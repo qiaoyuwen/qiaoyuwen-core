@@ -60,9 +60,7 @@ typings/
 # next.js build output
 .next
 
-# reskript build assets
-/*/*/es
-/*/*/cjs
+# build assets
 packages/doc/.docz
 .DS_Store
 /.umi

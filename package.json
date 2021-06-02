@@ -4,6 +4,7 @@
   "author": "qiaoyuwen",
   "license": "MIT",
   "scripts": {
+    "build": "rm -rf ./dist && tsc",
     "test": "jest test --coverage"
   },
   "devDependencies": {
