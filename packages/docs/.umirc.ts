@@ -1,7 +1,7 @@
 import { defineConfig } from 'dumi';
 
 export default defineConfig({
-  title: 'Site Name',
+  title: 'React hooks',
   mode: 'site',
   // more config: https://d.umijs.org/config
 });
