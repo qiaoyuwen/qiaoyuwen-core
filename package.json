@@ -1,60 +1,22 @@
 {
-  "name": "react-hooks",
-  "version": "1.0.0",
-  "author": "qiaoyuwen",
-  "license": "MIT",
+  "name": "@qiaoyuwen/core",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
-    "build": "rm -rf ./dist && tsc",
-    "test": "jest test --coverage",
-    "husky-init": "husky install"
+    "husky-init": "husky install",
+    "test:react-hooks": "cd ./packages/react-hooks && jest test --coverage"
   },
   "devDependencies": {
-    "@commitlint/cli": "^12.1.4",
-    "@commitlint/config-conventional": "^12.1.4",
-    "@testing-library/react-hooks": "^7.0.0",
-    "@types/jest": "^26.0.23",
-    "@types/react": "^17.0.9",
-    "@typescript-eslint/eslint-plugin": "^4.26.0",
-    "@typescript-eslint/parser": "^4.26.0",
-    "cz-conventional-changelog": "3.3.0",
-    "eslint": "^7.27.0",
-    "eslint-config-airbnb-base": "^14.2.1",
-    "eslint-config-prettier": "^8.3.0",
-    "eslint-formatter-pretty": "^4.0.0",
-    "eslint-plugin-compat": "^3.9.0",
-    "eslint-plugin-eslint-comments": "^3.2.0",
-    "eslint-plugin-import": "^2.23.4",
-    "eslint-plugin-jest": "^24.3.6",
-    "eslint-plugin-jsx-a11y": "^6.4.1",
-    "eslint-plugin-markdown": "^2.2.0",
-    "eslint-plugin-promise": "^5.1.0",
-    "eslint-plugin-react": "^7.24.0",
-    "eslint-plugin-react-hooks": "^4.2.0",
-    "eslint-plugin-unicorn": "^33.0.0",
+    "lerna": "^4.0.0",
     "husky": "^6.0.0",
-    "jest": "^27.0.3",
-    "lint-staged": "^11.0.0",
-    "prettier": "^2.3.0",
-    "prettier-plugin-style-order": "^0.2.2",
-    "react": "^17.0.2",
-    "react-test-renderer": "^17.0.2",
-    "ts-jest": "^27.0.2",
-    "typescript": "^4.3.2"
-  },
-  "lint-staged": {
-    "**/*.{js,jsx,tsx,ts,md,json}": [
-      "prettier --write",
-      "git add"
-    ],
-    "**/*.{js,jsx,ts,tsx}": "eslint --ext .js,.jsx,.ts,.tsx"
+    "cz-conventional-changelog": "3.3.0"
   },
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
   },
-  "dependencies": {
-    "immer": "^9.0.2",
-    "use-immer": "^0.5.2"
-  }
+  "license": "MIT"
 }

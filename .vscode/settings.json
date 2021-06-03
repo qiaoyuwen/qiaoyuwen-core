@@ -1,0 +1,7 @@
+{
+  "eslint.workingDirectories": [
+    "packages/docs", 
+    "packages/react-hooks",
+  ],
+  "eslint.packageManager": "yarn",
+}
