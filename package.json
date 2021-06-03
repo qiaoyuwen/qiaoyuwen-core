@@ -5,8 +5,10 @@
     "packages/*"
   ],
   "scripts": {
-    "husky-init": "husky install",
-    "test:react-hooks": "cd ./packages/react-hooks && jest test --coverage"
+    "doc:start": "cd ./packages/docs && yarn start",
+    "doc:build": "cd ./packages/docs && yarn build",
+    "test:react-hooks": "cd ./packages/react-hooks && jest test --coverage",
+    "husky-init": "husky install"
   },
   "devDependencies": {
     "lerna": "^4.0.0",
