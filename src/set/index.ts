@@ -19,7 +19,7 @@ function createReducers<T>() {
       }
       return output;
     },
-    delete(state: Set<T>, item: T) {
+    remove(state: Set<T>, item: T) {
       if (state.has(item)) {
         const output = clone(state);
         output.delete(item);
@@ -28,7 +28,7 @@ function createReducers<T>() {
 
       return state;
     },
-    deleteAll(state: Set<T>, items: Iterable<T>) {
+    removeAll(state: Set<T>, items: Iterable<T>) {
       const output = clone(state);
       for (const item of items) {
         output.delete(item);

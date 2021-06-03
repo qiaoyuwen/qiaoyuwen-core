@@ -32,18 +32,18 @@ describe('useSet', () => {
     expect(result.current[0]).toStrictEqual(new Set([1, 2, 3]));
   });
 
-  test('delete', () => {
+  test('remove', () => {
     const { result } = renderHook(() => useSet([1, 2]));
-    act(() => result.current[1].delete(2));
+    act(() => result.current[1].remove(2));
     expect(result.current[0]).toStrictEqual(new Set([1]));
 
-    act(() => result.current[1].delete(2));
+    act(() => result.current[1].remove(2));
     expect(result.current[0]).toStrictEqual(new Set([1]));
   });
 
-  test('deleteAll', () => {
+  test('removeAll', () => {
     const { result } = renderHook(() => useSet([1, 2, 3]));
-    act(() => result.current[1].deleteAll([2, 3]));
+    act(() => result.current[1].removeAll([2, 3]));
     expect(result.current[0]).toStrictEqual(new Set([1]));
   });
 

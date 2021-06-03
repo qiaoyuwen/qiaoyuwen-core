@@ -1,23 +1,20 @@
-import { useMemo, useState } from 'react';
+import { useSet } from '@/set';
+import { useMemo } from 'react';
 
 export function useSelection<T>(items: T[], defaultSelected: T[] = []) {
-  const [selected, setSelected] = useState<T[]>(defaultSelected);
-
-  const selectedSet = useMemo(() => new Set<T>(selected), [selected]);
+  const [selections, operator] = useSet(defaultSelected);
 
   const singleActions = useMemo(() => {
     const isSelected = (item: T) => {
-      return selectedSet.has(item);
+      return selections.has(item);
     };
 
     const select = (item: T) => {
-      selectedSet.add(item);
-      return setSelected(Array.from(selectedSet));
+      operator.add(item);
     };
 
     const unSelect = (item: T) => {
-      selectedSet.delete(item);
-      return setSelected(Array.from(selectedSet));
+      operator.remove(item);
     };
 
     const toggle = (item: T) => {
@@ -34,26 +31,20 @@ export function useSelection<T>(items: T[], defaultSelected: T[] = []) {
       unSelect,
       toggle,
     };
-  }, [selectedSet]);
+  }, [selections, operator]);
 
   const allActions = useMemo(() => {
     const selectAll = () => {
-      items.forEach((item) => {
-        selectedSet.add(item);
-      });
-      return setSelected(Array.from(selectedSet));
+      operator.addAll(items);
     };
 
     const unSelectAll = () => {
-      items.forEach((item) => {
-        selectedSet.delete(item);
-      });
-      return setSelected(Array.from(selectedSet));
+      operator.removeAll(items);
     };
 
-    const noneSelected = items.every((item) => !selectedSet.has(item));
+    const noneSelected = items.every((item) => !selections.has(item));
 
-    const allSelected = items.every((item) => selectedSet.has(item)) && !noneSelected;
+    const allSelected = items.every((item) => selections.has(item)) && !noneSelected;
 
     const partiallySelected = !noneSelected && !allSelected;
 
@@ -73,16 +64,15 @@ export function useSelection<T>(items: T[], defaultSelected: T[] = []) {
       partiallySelected,
       toggleAll,
     };
-  }, [selectedSet, items]);
+  }, [selections, operator, items]);
 
   return [
-    selected,
+    selections,
     {
       ...singleActions,
     },
     {
       ...allActions,
     },
-    setSelected,
   ] as const;
 }
