@@ -1,7 +1,7 @@
 import { renderHook, act } from '@testing-library/react-hooks';
 import { useArray } from '../index';
 
-describe('useBoolean', () => {
+describe('useArray', () => {
   test('valid return type', () => {
     const { result } = renderHook(() => useArray());
     const [value, methods] = result.current;
