@@ -5,7 +5,8 @@
   "license": "MIT",
   "scripts": {
     "build": "rm -rf ./dist && tsc",
-    "test": "jest test --coverage"
+    "test": "jest test --coverage",
+    "lint-staged": "lint-staged"
   },
   "dependencies": {
     "immer": "^9.0.2",
