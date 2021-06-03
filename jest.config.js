@@ -1,4 +1,7 @@
 module.exports = {
+  moduleNameMapper: {
+    '@/(.*)': '<rootDir>/src/$1',
+  },
   transform: {
     '^.+\\.tsx?$': 'ts-jest', // 匹配 .ts 或者 .tsx 结尾的文件
   },
