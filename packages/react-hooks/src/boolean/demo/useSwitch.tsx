@@ -1,23 +1,23 @@
 import type { FunctionComponent } from 'react';
-import { Space, Checkbox, Button } from 'antd';
+import { Space, Switch, Button } from 'antd';
 import 'antd/dist/antd.css';
-import { useBoolean } from '../..';
+import { useSwitch } from '..';
 
 const Component: FunctionComponent = () => {
-  const [checked, { setTrue, setFalse, toggle }] = useBoolean(false);
+  const [checked, { on, off, toggle }] = useSwitch(false);
 
   return (
     <>
       <Space direction="vertical">
         <Space>
-          <Checkbox checked={checked}>单选框</Checkbox>
+          <Switch checked={checked} />
         </Space>
         <Space>
-          <Button type="primary" onClick={setTrue}>
-            setTrue
+          <Button type="primary" onClick={on}>
+            on
           </Button>
-          <Button type="primary" onClick={setFalse}>
-            setFalse
+          <Button type="primary" onClick={off}>
+            off
           </Button>
           <Button type="primary" onClick={toggle}>
             toggle
