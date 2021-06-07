@@ -8,15 +8,30 @@ order: 2
 
 # useBoolean
 
-`useBoolean` returns a `[value, methods]` tuple, in which methods are listed as:
+管理布尔值的 hook
+
+# API
 
 ```typescript
-interface BooleanMethods {
-  // Change value to true
-  on(): void;
-  // Change value to false
-  off(): void;
-  // Toggle current value
-  toggle(): void;
-}
+const [
+  state,
+  methods,
+] = useBoolean(
+  initialValue?: boolean,
+);
 ```
+
+# 返回值
+
+| 参数    | 说明   | 类型    |
+| ------- | ------ | ------- |
+| state   | 状态值 | boolean |
+| methods | 方法集 | object  |
+
+# methods
+
+| 属性     | 说明         | 类型       |
+| -------- | ------------ | ---------- |
+| setTrue  | 设置为 true  | () => void |
+| setFalse | 设置为 false | () => void |
+| toggle   | 切换状态值   | () => void |

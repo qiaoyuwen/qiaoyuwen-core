@@ -1,10 +1,10 @@
 import { useMethodsNative } from '@/methods';
 
 const reducers = {
-  on() {
+  setTrue() {
     return true;
   },
-  off() {
+  setFalse() {
     return false;
   },
   toggle(value: boolean) {
@@ -17,6 +17,6 @@ export function useBoolean(initialValue: boolean = false) {
 }
 
 export function useSwitch(initialValue: boolean = false) {
-  const [value, { on, off, toggle }] = useBoolean(initialValue);
-  return [value, on, off, toggle] as const;
+  const [state, { setTrue: on, setFalse: off, toggle }] = useBoolean(initialValue);
+  return [state, { on, off, toggle }] as const;
 }
