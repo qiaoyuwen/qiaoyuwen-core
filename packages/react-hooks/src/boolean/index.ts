@@ -1,4 +1,4 @@
-import { useMethodsNative } from '@/methods';
+import { useMethodsNative } from '..';
 
 const reducers = {
   setTrue() {

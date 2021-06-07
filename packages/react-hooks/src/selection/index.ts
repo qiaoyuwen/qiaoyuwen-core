@@ -1,4 +1,4 @@
-import { useSet } from '@/set';
+import { useSet } from '../set';
 import { useMemo } from 'react';
 
 export function useSelection<T>(items: T[], defaultSelected: T[] = []) {

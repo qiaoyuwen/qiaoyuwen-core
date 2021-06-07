@@ -1,5 +1,5 @@
 /* eslint-disable no-restricted-syntax */
-import { useMethodsNative } from '@/methods';
+import { useMethodsNative } from '../methods';
 
 const clone = <T>(set: Set<T>) => new Set(set.values());
 

@@ -10,6 +10,8 @@ order: 2
 
 管理布尔值的 hook
 
+<code src="./demo/useBoolean.tsx">
+
 # API
 
 ```typescript

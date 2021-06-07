@@ -1,4 +1,4 @@
-import { useMethodsNative } from '@/methods';
+import { useMethodsNative } from '../methods';
 
 export interface CounterOptions {
   min?: number;
