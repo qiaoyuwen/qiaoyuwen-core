@@ -1,5 +1,5 @@
-import { renderHook } from '@testing-library/react-hooks';
-import { useTimeout, useInterval } from '../index';
+import { act, renderHook } from '@testing-library/react-hooks';
+import { useTimeout, useInterval, useCountdown } from '../index';
 
 const timeout = (ms: number) => {
   return new Promise((resolve) => {
@@ -52,5 +52,27 @@ describe('useInterval', () => {
     unmount();
     await timeout(11);
     expect(fn).not.toHaveBeenCalled();
+  });
+});
+
+describe('useCountdown', () => {
+  test('init', async () => {
+    const { result } = renderHook(() => useCountdown(0.5 * 1000, 0.1 * 1000));
+    expect(result.current[0]).toStrictEqual(0.5 * 1000);
+
+    const { result: result1 } = renderHook(() => useCountdown());
+    expect(result1.current[0]).toStrictEqual(60 * 1000);
+  });
+
+  test('start', async () => {
+    const { result } = renderHook(() => useCountdown(0.5 * 1000, 0.1 * 1000));
+    await act(() => result.current[1]());
+    expect(result.current[0]).toStrictEqual(0);
+  });
+
+  test('not executes if step time is negative', async () => {
+    const { result } = renderHook(() => useCountdown(0.5 * 1000, -1 * 1000));
+    await act(() => result.current[1]());
+    expect(result.current[0]).toStrictEqual(0.5 * 1000);
   });
 });

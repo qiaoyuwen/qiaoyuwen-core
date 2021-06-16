@@ -8,6 +8,7 @@
     "doc:start": "dumi dev",
     "doc:build": "dumi build",
     "test:react-hooks": "cd ./packages/react-hooks && jest test --coverage",
+    "build:react-hooks": "cd ./packages/react-hooks && yarn build",
     "husky-init": "husky install"
   },
   "devDependencies": {
