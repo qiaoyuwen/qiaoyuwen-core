@@ -66,6 +66,15 @@ describe('useCountdown', () => {
 
   test('start', async () => {
     const { result } = renderHook(() => useCountdown(0.5 * 1000, 0.1 * 1000));
+    let index = 0;
+    const timeId = setInterval(() => {
+      index += 1;
+      if (index > 5) {
+        clearInterval(timeId);
+        return;
+      }
+      expect(result.current[0]).toStrictEqual(0.5 * 1000 - 0.1 * 1000 * index);
+    }, 0.1 * 1000 + 20);
     await act(() => result.current[1]());
     expect(result.current[0]).toStrictEqual(0);
   });
