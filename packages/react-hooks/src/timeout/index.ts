@@ -37,10 +37,19 @@ export function useInterval(callback: () => void, ms: number) {
   }, [ms]);
 }
 
-export function useCountdown(initialCountdownMs: number = 60 * 1000, stepMs: number = 1 * 1000) {
+export function useCountdown(
+  initialCountdownMs: number = 60 * 1000,
+  stepMs: number = 1 * 1000,
+  callback?: () => void,
+) {
   const [countdown, setCountdown] = useState(initialCountdownMs);
   const countdownRef = useRef(initialCountdownMs);
   const timeoutIdRef = useRef<NodeJS.Timeout>();
+  const callbackRef = useRef(callback);
+
+  useEffect(() => {
+    callbackRef.current = callback;
+  }, [callback]);
 
   const removeTimeout = useCallback(() => {
     if (timeoutIdRef.current) {
@@ -54,12 +63,13 @@ export function useCountdown(initialCountdownMs: number = 60 * 1000, stepMs: num
       return Promise.resolve();
     }
     timeoutIdRef.current = setInterval(() => {
-      if (countdownRef.current <= 0) {
-        removeTimeout();
-        return;
-      }
       countdownRef.current -= stepMs;
       setCountdown(countdownRef.current);
+
+      if (countdownRef.current <= 0) {
+        removeTimeout();
+        callbackRef.current?.();
+      }
     }, stepMs);
   }, [removeTimeout, stepMs]);
 

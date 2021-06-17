@@ -77,7 +77,7 @@ describe('useCountdown', () => {
         expect(result.current[0]).toStrictEqual(0.5 * 1000 - 0.1 * 1000 * index);
       }, 0.1 * 1000 + 20);
       result.current[1]();
-      return timeout(650);
+      return timeout(550);
     });
     expect(result.current[0]).toStrictEqual(0);
   });
@@ -105,6 +105,16 @@ describe('useCountdown', () => {
       return timeout(550);
     });
     expect(result.current[0]).toStrictEqual(0.2 * 1000);
+  });
+
+  test('callback', async () => {
+    const fn = jest.fn();
+    const { result } = renderHook(() => useCountdown(0.5 * 1000, 0.1 * 1000, fn));
+    await act(() => {
+      result.current[1]();
+      return timeout(550);
+    });
+    expect(fn).toHaveBeenCalled();
   });
 
   test('not executes if step time is negative', async () => {

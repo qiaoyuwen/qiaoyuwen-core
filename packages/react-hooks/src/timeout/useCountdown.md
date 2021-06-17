@@ -18,6 +18,7 @@ order: 1
 const [countdown, start, pause, reset] = useCountdown(
   initialCountdownMs: number,
   stepMs: number,
+  callback?: () => void,
 );
 ```
 
