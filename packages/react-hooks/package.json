@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "author": "qiaoyuwen",
   "license": "MIT",
+  "main": "dist/index.js",
   "scripts": {
     "build": "rm -rf ./dist && tsc",
     "test": "jest test --coverage",
