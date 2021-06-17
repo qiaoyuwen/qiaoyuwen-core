@@ -7,8 +7,8 @@
   "scripts": {
     "doc:start": "dumi dev",
     "doc:build": "dumi build",
-    "test:react-hooks": "cd ./packages/react-hooks && jest test --coverage",
-    "build:react-hooks": "cd ./packages/react-hooks && yarn build",
+    "test:react-hooks": "yarn workspace @qiaoyuwen/react-hooks run test",
+    "build:react-hooks": "yarn workspace @qiaoyuwen/react-hooks run build",
     "husky-init": "husky install"
   },
   "devDependencies": {

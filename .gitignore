@@ -65,4 +65,4 @@ packages/doc/.docz
 .DS_Store
 /.umi
 /.umi-production
-/dist
+packages/*/dist
