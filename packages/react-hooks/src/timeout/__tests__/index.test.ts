@@ -2,7 +2,7 @@ import { act, renderHook } from '@testing-library/react-hooks';
 import { useTimeout, useInterval, useCountdown } from '../index';
 
 const timeout = (ms: number) => {
-  return new Promise((resolve) => {
+  return new Promise<void>((resolve) => {
     setTimeout(resolve, ms);
   });
 };
@@ -66,22 +66,53 @@ describe('useCountdown', () => {
 
   test('start', async () => {
     const { result } = renderHook(() => useCountdown(0.5 * 1000, 0.1 * 1000));
-    let index = 0;
-    const timeId = setInterval(() => {
-      index += 1;
-      if (index > 5) {
-        clearInterval(timeId);
-        return;
-      }
-      expect(result.current[0]).toStrictEqual(0.5 * 1000 - 0.1 * 1000 * index);
-    }, 0.1 * 1000 + 20);
-    await act(() => result.current[1]());
+    await act(() => {
+      let index = 0;
+      const timeId = setInterval(() => {
+        index += 1;
+        if (index > 5) {
+          clearInterval(timeId);
+          return;
+        }
+        expect(result.current[0]).toStrictEqual(0.5 * 1000 - 0.1 * 1000 * index);
+      }, 0.1 * 1000 + 20);
+      result.current[1]();
+      return timeout(650);
+    });
     expect(result.current[0]).toStrictEqual(0);
+  });
+
+  test('start reset', async () => {
+    const { result } = renderHook(() => useCountdown(0.5 * 1000, 0.1 * 1000));
+    await act(() => {
+      result.current[1]();
+      return timeout(550);
+    });
+    expect(result.current[0]).toStrictEqual(0);
+
+    act(() => result.current[3]());
+    expect(result.current[0]).toStrictEqual(0.5 * 1000);
+  });
+
+  test('stop', async () => {
+    const { result } = renderHook(() => useCountdown(0.5 * 1000, 0.1 * 1000));
+    await act(() => {
+      const timeId = setTimeout(() => {
+        result.current[2]();
+        clearTimeout(timeId);
+      }, 320);
+      result.current[1]();
+      return timeout(550);
+    });
+    expect(result.current[0]).toStrictEqual(0.2 * 1000);
   });
 
   test('not executes if step time is negative', async () => {
     const { result } = renderHook(() => useCountdown(0.5 * 1000, -1 * 1000));
-    await act(() => result.current[1]());
+    await act(() => {
+      result.current[1]();
+      return timeout(100);
+    });
     expect(result.current[0]).toStrictEqual(0.5 * 1000);
   });
 });

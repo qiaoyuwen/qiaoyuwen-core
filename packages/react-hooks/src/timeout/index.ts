@@ -53,18 +53,27 @@ export function useCountdown(initialCountdownMs: number = 60 * 1000, stepMs: num
     if (stepMs < 0) {
       return Promise.resolve();
     }
-    return new Promise<void>((resolve) => {
-      timeoutIdRef.current = setInterval(() => {
-        if (countdownRef.current <= 0) {
-          removeTimeout();
-          resolve();
-          return;
-        }
-        countdownRef.current -= stepMs;
-        setCountdown(countdownRef.current);
-      }, stepMs);
-    });
+    timeoutIdRef.current = setInterval(() => {
+      if (countdownRef.current <= 0) {
+        removeTimeout();
+        return;
+      }
+      countdownRef.current -= stepMs;
+      setCountdown(countdownRef.current);
+    }, stepMs);
   }, [removeTimeout, stepMs]);
 
-  return [countdown, start] as const;
+  const reset = useCallback(() => {
+    removeTimeout();
+    countdownRef.current = initialCountdownMs;
+    setCountdown(countdownRef.current);
+  }, [initialCountdownMs, removeTimeout]);
+
+  useEffect(() => {
+    return () => {
+      removeTimeout();
+    };
+  }, [removeTimeout]);
+
+  return [countdown, start, removeTimeout, reset] as const;
 }
