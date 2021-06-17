@@ -4,3 +4,4 @@ export * from './methods';
 export * from './number';
 export * from './selection';
 export * from './set';
+export * from './timeout';
