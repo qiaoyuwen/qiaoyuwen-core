@@ -7,6 +7,7 @@
   "scripts": {
     "doc:start": "dumi dev",
     "doc:build": "dumi build",
+    "lint:react-hooks": "yarn workspace @qiaoyuwen/react-hooks run lint-staged",
     "test:react-hooks": "yarn workspace @qiaoyuwen/react-hooks run test",
     "build:react-hooks": "yarn workspace @qiaoyuwen/react-hooks run build",
     "husky-init": "husky install",

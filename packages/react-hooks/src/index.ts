@@ -5,3 +5,4 @@ export * from './number';
 export * from './selection';
 export * from './set';
 export * from './timeout';
+export * from './pagination';
