@@ -1,0 +1,55 @@
+---
+title: useInfinitePagination
+nav:
+  title: Hooks
+  path: /hook
+order: 2
+---
+
+# useInfinitePagination
+
+无限加载分页的 hook
+
+<code src="./demo/useInfinitePagination.tsx">
+
+# API
+
+```typescript
+const [
+  data,
+  methods,
+] = useInfinitePagination(
+  key: string,
+  fetcher: (current: number, pageSize: number, params?: Record<string, any>) => Promise<T[]>,
+  pageSize: number,
+  params?: Record<string, any>,
+);
+```
+
+# 参数
+
+| 参数名 | 说明 | 类型 |
+| --- | --- | --- |
+| key | swr 唯一 key 值 | string |
+| fetcher | 获取数据的方法 | (current: number, pageSize: number, params?: Record<string, any>) => Promise<T[]> |
+| pageSize | 每页大小 | number |
+| params | 其它参数 | Record<string, any> |
+
+# 返回值
+
+| 参数名  | 说明     | 类型   |
+| ------- | -------- | ------ |
+| data    | 分页数据 | T[]    |
+| methods | 方法集   | object |
+
+# methods
+
+| 属性          | 说明         | 类型       |
+| ------------- | ------------ | ---------- |
+| refresh       | 刷新         | () => void |
+| loadMore      | 加载下一页   | () => void |
+| reset         | 重置到第一页 | () => void |
+| isLoading     | 是否加载中   | boolean    |
+| isEmpty       | 是否为空     | boolean    |
+| isReachingEnd | 是否加载完毕 | boolean    |
+| isRefreshing  | 是否刷新中   | boolean    |

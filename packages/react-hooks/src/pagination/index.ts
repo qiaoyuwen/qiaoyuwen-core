@@ -20,9 +20,20 @@ export function useInfinitePagination<T>(
     const isRefreshing = isValidating && !!(data && data.length === size);
     const isReachingEnd = isEmpty || !!(data && data[data.length - 1].length < pageSize);
 
+    const loadMore = () => {
+      if (!isLoading && !isReachingEnd) {
+        setSize(size + 1);
+      }
+    };
+
+    const reset = () => {
+      setSize(1);
+    };
+
     return {
       refresh: mutate,
-      loadMore: () => setSize(size + 1),
+      loadMore,
+      reset,
       isLoading,
       isEmpty,
       isReachingEnd,
