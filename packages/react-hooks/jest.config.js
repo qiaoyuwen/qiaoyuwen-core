@@ -9,4 +9,5 @@ module.exports = {
   testEnvironment: 'node', // 测试环境
   // 不算入覆盖率的文件夹
   coveragePathIgnorePatterns: ['/node_modules/', '/__test__/'],
+  testPathIgnorePatterns: ['<rootDir>/dist'],
 };

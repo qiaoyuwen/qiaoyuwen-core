@@ -15,5 +15,5 @@
     "moduleResolution": "node"
   },
   "include": ["src/**/*", "jest.config.js", ".eslintrc.js"],
-  "exclude": ["dist", "**/*.test.ts"]
+  "exclude": ["dist"]
 }
