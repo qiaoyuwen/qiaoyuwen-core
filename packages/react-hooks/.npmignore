@@ -1,0 +1,10 @@
+dist/*/__tests__
+dist/*/demo
+coverage/
+src/
+.eslintrc.js
+.npmignore
+.prettierrc.js
+jest.config.js
+tsconfig.json
+*.tgz
