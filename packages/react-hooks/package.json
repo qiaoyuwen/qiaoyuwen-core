@@ -18,6 +18,7 @@
   "devDependencies": {
     "@testing-library/react-hooks": "^7.0.0",
     "@types/jest": "^26.0.23",
+    "@types/jsdom": "^16.2.12",
     "@types/react": "^17.0.9",
     "@types/react-infinite-scroller": "^1.2.1",
     "@typescript-eslint/eslint-plugin": "^4.26.0",
@@ -38,6 +39,7 @@
     "eslint-plugin-react-hooks": "^4.2.0",
     "eslint-plugin-unicorn": "^33.0.0",
     "jest": "^27.0.3",
+    "jsdom": "^16.6.0",
     "lint-staged": "^11.0.0",
     "prettier": "^2.3.0",
     "prettier-plugin-style-order": "^0.2.2",
