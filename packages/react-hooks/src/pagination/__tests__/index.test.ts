@@ -1,5 +1,6 @@
 import { act, renderHook } from '@testing-library/react-hooks';
 import { useInfinitePagination } from '..';
+import { cache } from 'swr';
 
 const timeout = (ms: number) => {
   return new Promise<void>((resolve) => {
@@ -81,10 +82,16 @@ describe('useInfinitePagination', () => {
     await act(async () => {
       await timeout(150);
       result.current[1].loadMore();
+      result.current[1].loadMore();
       await timeout(150);
       expect(result.current[0].length).toStrictEqual(15);
       expect(result.current[1].isLoading).toEqual(false);
       expect(result.current[1].isReachingEnd).toEqual(true);
+      result.current[1].reset();
+      await timeout(150);
+      expect(result.current[0].length).toStrictEqual(10);
+      expect(result.current[1].isLoading).toEqual(false);
+      expect(result.current[1].isReachingEnd).toEqual(false);
     });
   });
 
@@ -98,5 +105,12 @@ describe('useInfinitePagination', () => {
       expect(result.current[1].isLoading).toEqual(true);
       expect(result.current[1].isReachingEnd).toEqual(false);
     });
+  });
+
+  afterEach(async () => {
+    await new Promise<void>((resolve) => {
+      resolve();
+    });
+    cache.clear();
   });
 });
