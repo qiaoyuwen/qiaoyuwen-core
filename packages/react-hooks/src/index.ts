@@ -6,3 +6,4 @@ export * from './selection';
 export * from './set';
 export * from './timeout';
 export * from './pagination';
+export * from './local-storage';
