@@ -15,6 +15,7 @@ export function useLocalStorage<T>(key: string, initialValue: T) {
   const setLocalStorageValue = useCallback(
     (newValue: T) => {
       window.localStorage.setItem(key, JSON.stringify(newValue));
+      setValue(newValue);
     },
     [key],
   );
