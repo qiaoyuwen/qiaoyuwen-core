@@ -20,20 +20,20 @@ const [
   methods,
 ] = useInfinitePagination(
   key: string,
-  fetcher: (current: number, pageSize: number, params?: Record<string, any>) => Promise<T[]>,
+  fetcher: (current: number, pageSize: number, params?: Record<string, any>) => Promise<T[], P = Record<string, any>>,
   pageSize: number,
-  params?: Record<string, any>,
+  params?: P,
 );
 ```
 
 # 参数
 
-| 参数名 | 说明 | 类型 |
-| --- | --- | --- |
-| key | swr 唯一 key 值 | string |
-| fetcher | 获取数据的方法 | (current: number, pageSize: number, params?: Record<string, any>) => Promise<T[]> |
-| pageSize | 每页大小 | number |
-| params | 其它参数 | Record<string, any> |
+| 参数名   | 说明            | 类型                                                            |
+| -------- | --------------- | --------------------------------------------------------------- |
+| key      | swr 唯一 key 值 | string                                                          |
+| fetcher  | 获取数据的方法  | (current: number, pageSize: number, params?: P) => Promise<T[]> |
+| pageSize | 每页大小        | number                                                          |
+| params   | 其它参数        | P                                                               |
 
 # 返回值
 
