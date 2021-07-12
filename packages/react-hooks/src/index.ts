@@ -7,3 +7,5 @@ export * from './set';
 export * from './timeout';
 export * from './pagination';
 export * from './local-storage';
+export * from './size';
+export * from './virtual-list';
