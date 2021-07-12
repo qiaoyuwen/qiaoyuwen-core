@@ -30,7 +30,7 @@ export function useSize(target: BasicTarget) {
         });
       });
     });
-    resizeObserver.observe(el as Element);
+    resizeObserver.observe(el);
 
     // eslint-disable-next-line consistent-return
     return () => resizeObserver.disconnect();

@@ -1,23 +1,17 @@
 import type { MutableRefObject } from 'react';
 
-type TargetElement = HTMLElement | Element | Document | Window;
+type Target<T> = T | undefined | null;
 
-export type BasicTarget<T = HTMLElement> =
-  | T
-  | null
-  | (() => T | null)
-  | MutableRefObject<T | null | undefined>;
+export type BasicTarget<T = Element> = (() => Target<T>) | Target<T> | MutableRefObject<Target<T>>;
 
-export function getTargetElement(
-  target?: BasicTarget<TargetElement>,
-  defaultTarget?: TargetElement,
-): TargetElement | undefined | null {
+export function getTargetElement<T>(target?: BasicTarget<T>, defaultTarget?: T) {
   if (!target) {
     return defaultTarget;
   }
 
-  let targetElement: TargetElement | undefined | null;
+  let targetElement: Target<T>;
   if (typeof target === 'function') {
+    // @ts-ignore
     targetElement = target();
   } else if ('current' in target) {
     targetElement = target.current;

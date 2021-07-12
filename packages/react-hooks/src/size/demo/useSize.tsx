@@ -1,11 +1,10 @@
 /**
- * title: 将 state 持久化在 localStorage 中
- * desc: 刷新页面后，可以看到输入框中的内容被从 localStorage 中恢复了。
+ * title: 使用ref监听元素尺寸变化
  */
 
 import type { FunctionComponent } from 'react';
 import { useRef } from 'react';
-import { Space, Input } from 'antd';
+import { Space } from 'antd';
 import 'antd/dist/antd.css';
 import { useSize } from '..';
 
@@ -20,7 +19,7 @@ const Component: FunctionComponent = () => {
           <span>宽：{size.width}</span>
           <span>高：{size.height}</span>
         </Space>
-        <Input.TextArea ref={elRef} />
+        <textarea ref={elRef} />
       </Space>
     </>
   );
