@@ -8,6 +8,7 @@ import { useState } from 'react';
 import { Button, Space, InputNumber } from 'antd';
 import 'antd/dist/antd.css';
 import { useVirtualList } from '..';
+import type { DropResult } from 'react-beautiful-dnd';
 import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
 
 const getItems = (length: number = 10000) => {
@@ -48,7 +49,7 @@ function Item({ provided, item, style, isDragging }) {
 }
 
 const Component: FunctionComponent = () => {
-  const items = getItems();
+  const [items, setItems] = useState(getItems());
   const [value, setValue] = useState<number>(1000);
   const { list, containerProps, scrollTo } = useVirtualList(items, {
     itemHeight: 50,
@@ -56,9 +57,17 @@ const Component: FunctionComponent = () => {
 
   const onChange = useCallback((changeValue: number) => setValue(changeValue), []);
 
-  const onDragEnd = (result) => {
-    console.log('onDragEnd', result);
-  };
+  const onDragEnd = useCallback(
+    ({ source, destination }: DropResult) => {
+      if (!destination) {
+        return;
+      }
+      const curRow = items.splice(source.index, 1)[0];
+      items.splice(destination.index, 0, curRow);
+      setItems([...items]);
+    },
+    [items],
+  );
 
   return (
     <>
@@ -83,7 +92,7 @@ const Component: FunctionComponent = () => {
                       display: 'flex',
                       justifyContent: 'center',
                       alignItems: 'center',
-                      border: '1px solid #e8e8e8',
+                      border: '1px solid red',
                     }}
                   />
                 );
