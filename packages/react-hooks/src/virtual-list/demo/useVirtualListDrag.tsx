@@ -10,6 +10,7 @@ import 'antd/dist/antd.css';
 import { useVirtualList } from '..';
 import type { DropResult } from 'react-beautiful-dnd';
 import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
+import { DragOutlined } from '@ant-design/icons';
 
 const getItems = (length: number = 10000) => {
   return Array.from({ length }).map((_, index) => `${index + 1}`);
@@ -38,12 +39,14 @@ function Item({ provided, item, style, isDragging }) {
   return (
     <div
       {...provided.draggableProps}
-      {...provided.dragHandleProps}
       ref={provided.innerRef}
       style={getStyle({ provided, style, isDragging })}
       className={`item ${isDragging ? 'is-dragging' : ''}`}
     >
       Item: {item.data}
+      <div style={{ marginLeft: 24 }} {...provided.dragHandleProps}>
+        <DragOutlined />
+      </div>
     </div>
   );
 }
