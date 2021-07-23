@@ -1,11 +1,11 @@
 import { defineConfig } from 'dumi';
 
 export default defineConfig({
-  title: 'React hooks',
+  title: 'Qiaoyuwen Core',
   mode: 'site',
   history: {
     type: "hash",
   },
-  publicPath: process.env.CI ? "/react-hooks/" : "/",
+  publicPath: process.env.CI ? "/qiaoyuwen-core/" : "/",
   // more config: https://d.umijs.org/config
 });
