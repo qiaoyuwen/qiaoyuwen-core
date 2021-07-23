@@ -249,6 +249,7 @@ module.exports = {
       ],
     },
     requireConfigFile: false,
+    tsconfigRootDir: __dirname,
     project: './tsconfig.json',
   },
 };
