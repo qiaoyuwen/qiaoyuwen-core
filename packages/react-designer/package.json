@@ -14,6 +14,8 @@
     "lint-staged": "lint-staged"
   },
   "dependencies": {
+    "@designable/core": "^0.4.11",
+    "@designable/react": "^0.4.11",
     "react": "^17.0.0",
     "react-dom": "^17.0.0",
     "umi": "^3.5.13"

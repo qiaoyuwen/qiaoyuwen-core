@@ -1,9 +1,16 @@
-import styles from './index.less';
+import type { FunctionComponent } from 'react';
+import { useMemo } from 'react';
+import { createDesigner } from '@designable/core';
+import { Designer, MainPanel } from '@designable/react';
 
-export default function IndexPage() {
+const App: FunctionComponent = () => {
+  const engine = useMemo(() => createDesigner(), []);
+
   return (
-    <div>
-      <h1 className={styles.title}>Page index</h1>
-    </div>
+    <Designer engine={engine}>
+      <MainPanel logo="Designer"></MainPanel>
+    </Designer>
   );
-}
+};
+
+export default App;
