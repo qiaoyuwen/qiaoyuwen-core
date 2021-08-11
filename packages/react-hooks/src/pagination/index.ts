@@ -1,4 +1,5 @@
 import { useMemo } from 'react';
+import type { SWRInfiniteConfiguration } from 'swr';
 import { useSWRInfinite } from 'swr';
 
 export function useInfinitePagination<T, P = Record<string, any>>(
@@ -6,10 +7,12 @@ export function useInfinitePagination<T, P = Record<string, any>>(
   fetcher: (current: number, pageSize: number, params?: P) => Promise<T[]>,
   pageSize: number,
   params?: P,
+  options?: SWRInfiniteConfiguration,
 ) {
   const { data, error, mutate, size, setSize, isValidating } = useSWRInfinite<T[], P>(
     (current) => [key, current + 1, pageSize, params],
     (_, current, _pageSize, _params) => fetcher(current, _pageSize, _params),
+    options,
   );
 
   const returnObj = useMemo(() => {
