@@ -1,7 +1,7 @@
 ---
 title: useBoolean
 nav:
-  title: Hooks
+  title: Boolean
   path: /hook
 order: 2
 ---

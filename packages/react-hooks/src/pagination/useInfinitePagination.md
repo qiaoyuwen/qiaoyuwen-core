@@ -1,7 +1,7 @@
 ---
 title: useInfinitePagination
 nav:
-  title: Hooks
+  title: Pagination
   path: /hook
 order: 2
 ---

@@ -1,7 +1,7 @@
 ---
 title: useCounter
 nav:
-  title: Hooks
+  title: Number
   path: /hook
 order: 3
 ---

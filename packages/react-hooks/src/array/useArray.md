@@ -1,7 +1,7 @@
 ---
 title: useArray
 nav:
-  title: Hooks
+  title: Array
   path: /hook
 order: 1
 ---

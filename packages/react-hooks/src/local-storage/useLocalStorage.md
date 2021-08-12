@@ -1,7 +1,7 @@
 ---
 title: useLocalStorage
 nav:
-  title: Hooks
+  title: Storage
   path: /hook
 order: 2
 ---

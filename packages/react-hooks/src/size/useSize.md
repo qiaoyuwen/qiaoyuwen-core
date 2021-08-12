@@ -1,7 +1,7 @@
 ---
 title: useSize
 nav:
-  title: Hooks
+  title: Size
   path: /hook
 order: 2
 ---

@@ -3,6 +3,9 @@ title: useVirtualList
 nav:
   title: Hooks
   path: /hook
+group:
+  title: VirtualList
+  path: /hook/virtual-list/use-virtual-list
 order: 2
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: useTimeout
 nav:
-  title: Hooks
+  title: Timeout
   path: /hook
 order: 1
 ---

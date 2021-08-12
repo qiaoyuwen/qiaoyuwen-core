@@ -1,7 +1,7 @@
 ---
 title: useSelection
 nav:
-  title: Hooks
+  title: Selection
   path: /hook
 order: 3
 ---

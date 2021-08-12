@@ -1,7 +1,7 @@
 ---
 title: useSwitch
 nav:
-  title: Hooks
+  title: Boolean
   path: /hook
 order: 3
 ---

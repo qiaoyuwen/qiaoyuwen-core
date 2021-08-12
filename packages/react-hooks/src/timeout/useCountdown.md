@@ -1,7 +1,7 @@
 ---
 title: useCountdown
 nav:
-  title: Hooks
+  title: Timeout
   path: /hook
 order: 1
 ---

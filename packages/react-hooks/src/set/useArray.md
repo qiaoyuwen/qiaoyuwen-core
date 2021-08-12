@@ -1,7 +1,7 @@
 ---
 title: useSet
 nav:
-  title: Hooks
+  title: Set
   path: /hook
 order: 1
 ---
