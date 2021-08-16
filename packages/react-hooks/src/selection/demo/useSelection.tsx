@@ -15,7 +15,7 @@ const Component: FunctionComponent = () => {
     <>
       <Space direction="vertical">
         {data.map((item) => (
-          <Checkbox checked={isSelected(item)} onChange={() => toggle(item)}>
+          <Checkbox key={item} checked={isSelected(item)} onChange={() => toggle(item)}>
             {item}
           </Checkbox>
         ))}
