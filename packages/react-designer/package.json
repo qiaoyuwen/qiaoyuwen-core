@@ -18,6 +18,7 @@
     "@designable/react": "^0.4.35",
     "@designable/react-settings-form": "^0.4.35",
     "@formily/designable-antd": "^2.0.0-rc.1",
+    "eslint-plugin-jest": "^24.4.0",
     "react": "^17.0.0",
     "react-dom": "^17.0.0",
     "umi": "^3.5.13"

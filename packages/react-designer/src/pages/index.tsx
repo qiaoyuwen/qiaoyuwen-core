@@ -45,7 +45,7 @@ const engine = createDesigner();
 const App = () => {
   return (
     <Designer engine={engine}>
-      <MainPanel logo="Designer">
+      <MainPanel style={{ top: 64 }}>
         <CompositePanel>
           <CompositePanel.Item title="panels.Component" icon="Component">
             <DragSourceWidget title="sources.Inputs" name="inputs" />
