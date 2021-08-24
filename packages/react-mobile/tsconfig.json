@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "outDir": "dist",
+    "jsx": "preserve",
+    "allowJs": false,
+    "target": "ES2015",
+    "module": "CommonJS",
+    "esModuleInterop": true,
+    "strict": true,
+    "noImplicitAny": false,
+    "sourceMap": true,
+    "noEmit": false,
+    "declaration": true,
+    "skipLibCheck": true,
+    "moduleResolution": "node"
+  },
+  "include": ["src/**/*", "jest.config.js", ".eslintrc.js"],
+  "exclude": ["dist"]
+}
