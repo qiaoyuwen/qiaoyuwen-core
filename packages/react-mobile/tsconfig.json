@@ -12,7 +12,11 @@
     "noEmit": false,
     "declaration": true,
     "skipLibCheck": true,
-    "moduleResolution": "node"
+    "moduleResolution": "node",
+    "baseUrl": "./",
+    "paths": {
+      "@/*": ["src/*"]
+    }
   },
   "include": ["src/**/*", "jest.config.js", ".eslintrc.js"],
   "exclude": ["dist"]
